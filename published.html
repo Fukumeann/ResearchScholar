@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Published Papers - ResearchScholar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <button class="burger-menu-btn" id="burgerMenuBtn">&#9776;</button>
+        <h1 class="navbar-title">ResearchScholar</h1>
+        <nav class="navbar-links" id="navbarLinks">
+            <a href="#" class="navbar-link" id="registerNavLink">Register</a>
+            <a href="#" class="navbar-link" id="loginNavLink">Log in</a>
+        </nav>
+    </header>
+
+    <!-- Layout: Sidebar + Main -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="appSidebar">
+            <div class="user-profile-placeholder"></div>
+            <div class="user-status" id="userStatus">Guest User</div>
+            <ul class="sidebar-navigation">
+                <li><a href="index.html" id="browsePapersLink"><i class="fas fa-search"></i> Browse Papers</a></li>
+                <li><a href="profile.html" class="is-restricted" data-feature="Profile"><i class="fas fa-user"></i>
+                        Profile</a></li>
+                <li><a href="library.html" class="is-restricted" data-feature="Library"><i class="fas fa-book"></i>
+                        Library</a></li>
+                <li><a href="published.html" class="is-restricted" data-feature="Published"><i
+                            class="fas fa-file-alt"></i> Published</a></li>
+                <li><a href="questions.html" class="is-restricted" data-feature="Questions"><i
+                            class="fas fa-question-circle"></i> Questions</a></li>
+                <li><a href="notifications.html" class="is-restricted" data-feature="Notifications"><i
+                            class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="settings.html" class="is-restricted" data-feature="Settings"><i class="fas fa-cog"></i>
+                        Settings</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-file-alt"></i> Published Papers</h1>
+                <p>Your research publications and their impact metrics</p>
+            </div>
+
+            <!-- <div class="publication-controls">
+                <div class="publication-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">Total Publications</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">Total Citations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8.7</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">52</div>
+                        <div class="stat-label">H-Index</div>
+                    </div>
+                </div>
+
+                <div class="filter-controls">
+                    <select class="form-select">
+                        <option>All Years</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                    </select>
+                    <select class="form-select">
+                        <option>All Venues</option>
+                        <option>ICML</option>
+                        <option>NeurIPS</option>
+                        <option>ICLR</option>
+                        <option>ICRA</option>
+                    </select>
+                    <button class="btn">Submit New Paper</button>
+                </div>
+            </div>
+
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-header">
+                        <h3>Advanced Neural Network Architectures for Image Classification</h3>
+                        <div class="publication-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-secondary btn-small">View</button>
+                            <button class="btn btn-secondary btn-small">Share</button>
+                        </div>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="authors">Doe, J., Smith, A., Johnson, B.</span>
+                        <span class="venue">International Conference on Machine Learning (ICML) 2024</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <p class="publication-abstract">This paper introduces novel neural network architectures that
+                        achieve state-of-the-art performance on image classification tasks while maintaining
+                        computational efficiency.</p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Citations:</span>
+                            <span class="metric-value">127</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Downloads:</span>
+                            <span class="metric-value">2,341</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Rating:</span>
+                            <span class="metric-value">★ 4.8</span>
+                        </div>
+                    </div>
+                    <div class="publication-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">CNN</span>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-header">
+                        <h3>Federated Learning: Privacy-Preserving Machine Learning</h3>
+                        <div class="publication-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-secondary btn-small">View</button>
+                            <button class="btn btn-secondary btn-small">Share</button>
+                        </div>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="authors">Doe, J., Wilson, C., Brown, D.</span>
+                        <span class="venue">Conference on Neural Information Processing Systems (NeurIPS) 2023</span>
+                        <span class="year">2023</span>
+                    </div>
+                    <p class="publication-abstract">A comprehensive study on federated learning approaches that preserve
+                        user privacy while maintaining model performance in distributed settings.</p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Citations:</span>
+                            <span class="metric-value">89</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Downloads:</span>
+                            <span class="metric-value">1,876</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Rating:</span>
+                            <span class="metric-value">★ 4.7</span>
+                        </div>
+                    </div>
+                    <div class="publication-tags">
+                        <span class="tag">Federated Learning</span>
+                        <span class="tag">Privacy</span>
+                        <span class="tag">Distributed Systems</span>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-header">
+                        <h3>Robust Reinforcement Learning for Autonomous Navigation</h3>
+                        <div class="publication-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-secondary btn-small">View</button>
+                            <button class="btn btn-secondary btn-small">Share</button>
+                        </div>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="authors">Doe, J., Miller, E., Garcia, F.</span>
+                        <span class="venue">IEEE International Conference on Robotics and Automation (ICRA) 2023</span>
+                        <span class="year">2023</span>
+                    </div>
+                    <p class="publication-abstract">This work presents robust reinforcement learning algorithms for
+                        autonomous robot navigation in dynamic environments with uncertainty.</p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Citations:</span>
+                            <span class="metric-value">156</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Downloads:</span>
+                            <span class="metric-value">3,221</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Rating:</span>
+                            <span class="metric-value">★ 4.9</span>
+                        </div>
+                    </div>
+                    <div class="publication-tags">
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Reinforcement Learning</span>
+                        <span class="tag">Autonomous Systems</span>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-header">
+                        <h3>Natural Language Processing with Transformer Models</h3>
+                        <div class="publication-actions">
+                            <button class="btn btn-small">Edit</button>
+                            <button class="btn btn-secondary btn-small">View</button>
+                            <button class="btn btn-secondary btn-small">Share</button>
+                        </div>
+                    </div>
+                    <div class="publication-meta">
+                        <span class="authors">Doe, J., Anderson, G., Taylor, H.</span>
+                        <span class="venue">International Conference on Learning Representations (ICLR) 2022</span>
+                        <span class="year">2022</span>
+                    </div>
+                    <p class="publication-abstract">An exploration of transformer-based models for various natural
+                        language processing tasks, including sentiment analysis and text generation.</p>
+                    <div class="publication-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Citations:</span>
+                            <span class="metric-value">234</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Downloads:</span>
+                            <span class="metric-value">4,567</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Rating:</span>
+                            <span class="metric-value">★ 4.6</span>
+                        </div>
+                    </div>
+                    <div class="publication-tags">
+                        <span class="tag">NLP</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">BERT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="publication-actions">
+                <button class="btn">Submit New Paper</button>
+                <button class="btn btn-secondary">Export Publication List</button>
+                <button class="btn btn-secondary">Generate CV</button>
+            </div>
+        </main>
+    </div> -->
+
+            <!-- Login Modal -->
+            <div class="modal" id="loginModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeLoginModal">&times;</button>
+                    <h2 class="modal-title">Log in</h2>
+                    <form id="loginForm">
+                        <input type="email" class="form-input" placeholder="Email" required />
+                        <input type="password" class="form-input" placeholder="Password" required />
+                        <button type="submit" class="btn">Log in</button>
+                    </form>
+                    <hr class="form-divider" />
+                    <button class="btn btn-google" id="googleLoginBtn">Sign in with Google</button>
+                </div>
+            </div>
+
+            <!-- Register Modal -->
+            <div class="modal" id="registerModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeRegisterModal">&times;</button>
+                    <h2 class="modal-title">Register</h2>
+                    <form id="registerForm">
+                        <input type="text" class="form-input" placeholder="Full Name" required />
+                        <input type="email" class="form-input" placeholder="Email" required />
+                        <input type="password" class="form-input" placeholder="Password" required />
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Logout Modal -->
+            <div class="modal" id="logoutModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeLogoutModal">&times;</button>
+                    <div class="logout-icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                    <h2 class="modal-title">Confirm Logout</h2>
+                    <p>Are you sure you want to log out of your account?</p>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="cancelLogout">Cancel</button>
+                        <button class="btn btn-danger" id="confirmLogout">Logout</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Firebase + App Script -->
+            <script type="module" src="app.js"></script>
+</body>
+
+</html>

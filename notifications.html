@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications - ResearchScholar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <button class="burger-menu-btn" id="burgerMenuBtn">&#9776;</button>
+        <h1 class="navbar-title">ResearchScholar</h1>
+        <nav class="navbar-links" id="navbarLinks">
+            <a href="#" class="navbar-link" id="registerNavLink">Register</a>
+            <a href="#" class="navbar-link" id="loginNavLink">Log in</a>
+        </nav>
+    </header>
+
+    <!-- Layout: Sidebar + Main -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="appSidebar">
+            <div class="user-profile-placeholder"></div>
+            <div class="user-status" id="userStatus">Guest User</div>
+            <ul class="sidebar-navigation">
+                <li><a href="index.html" id="browsePapersLink"><i class="fas fa-search"></i> Browse Papers</a></li>
+                <li><a href="profile.html" class="is-restricted" data-feature="Profile"><i class="fas fa-user"></i>
+                        Profile</a></li>
+                <li><a href="library.html" class="is-restricted" data-feature="Library"><i class="fas fa-book"></i>
+                        Library</a></li>
+                <li><a href="published.html" class="is-restricted" data-feature="Published"><i
+                            class="fas fa-file-alt"></i> Published</a></li>
+                <li><a href="questions.html" class="is-restricted" data-feature="Questions"><i
+                            class="fas fa-question-circle"></i> Questions</a></li>
+                <li><a href="notifications.html" class="is-restricted" data-feature="Notifications"><i
+                            class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="settings.html" class="is-restricted" data-feature="Settings"><i class="fas fa-cog"></i>
+                        Settings</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-bell"></i> Notifications</h1>
+                <p>Stay updated with your research activities and community interactions</p>
+            </div>
+
+            <div class="notification-controls">
+                <div class="filter-tabs">
+                    <button class="tab-btn active">All</button>
+                    <button class="tab-btn">Unread</button>
+                    <button class="tab-btn">Papers</button>
+                    <button class="tab-btn">Questions</button>
+                    <button class="tab-btn">Comments</button>
+                </div>
+                <div class="notification-actions">
+                    <button class="btn btn-secondary">Mark All as Read</button>
+                    <button class="btn btn-secondary">Settings</button>
+                </div>
+            </div>
+            <!--
+            <div class="notifications-list">
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <span class="icon">📄</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>New Paper Recommendation</h4>
+                        <p>Based on your research interests, we recommend "Advanced Neural Network Architectures for
+                            Image Classification" by Smith et al.</p>
+                        <span class="notification-time">2 minutes ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <span class="icon">💬</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>New Comment on Your Question</h4>
+                        <p>Sarah Chen replied to your question about "Transformer implementation best practices"</p>
+                        <span class="notification-time">15 minutes ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">❤</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Paper Added to Favorites</h4>
+                        <p>Your paper "Federated Learning: Privacy and Efficiency" was added to favorites by 3
+                            researchers</p>
+                        <span class="notification-time">1 hour ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <span class="icon">📊</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Citation Alert</h4>
+                        <p>Your paper "Deep Learning for Image Recognition" received 5 new citations this week</p>
+                        <span class="notification-time">3 hours ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">🔔</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Conference Deadline Reminder</h4>
+                        <p>ICML 2024 submission deadline is approaching. Don't forget to submit your latest research!
+                        </p>
+                        <span class="notification-time">5 hours ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">👥</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Collaboration Request</h4>
+                        <p>Michael Rodriguez wants to collaborate on a federated learning project</p>
+                        <span class="notification-time">1 day ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <span class="icon">⭐</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>High Rating Received</h4>
+                        <p>Your answer to "How to handle imbalanced datasets?" received a 5-star rating</p>
+                        <span class="notification-time">2 days ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">📚</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>New Paper in Your Field</h4>
+                        <p>A new paper matching your research interests was published: "Attention Mechanisms in Vision
+                            Transformers"</p>
+                        <span class="notification-time">3 days ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">🎯</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Research Goal Achievement</h4>
+                        <p>Congratulations! You've achieved your monthly goal of reading 10 research papers</p>
+                        <span class="notification-time">1 week ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <span class="icon">🔍</span>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Search Alert</h4>
+                        <p>New papers matching your saved search "machine learning privacy" are available</p>
+                        <span class="notification-time">1 week ago</span>
+                    </div>
+                    <div class="notification-actions">
+                        <button class="btn-icon" title="Mark as read">✓</button>
+                        <button class="btn-icon" title="Dismiss">×</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notification-settings">
+                <h3>Notification Preferences</h3>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" checked />
+                            Email notifications for new citations
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" checked />
+                            Weekly research digest
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" checked />
+                            New paper recommendations
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" />
+                            Collaboration requests
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" checked />
+                            Question and answer notifications
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" />
+                            Marketing emails
+                        </label>
+                    </div>
+                </div>
+                <button class="btn">Save Preferences</button>
+            </div>
+        </main>
+    </div> -->
+
+            <!-- Login Modal -->
+            <div class="modal" id="loginModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeLoginModal">&times;</button>
+                    <h2 class="modal-title">Log in</h2>
+                    <form id="loginForm">
+                        <input type="email" class="form-input" placeholder="Email" required />
+                        <input type="password" class="form-input" placeholder="Password" required />
+                        <button type="submit" class="btn">Log in</button>
+                    </form>
+                    <hr class="form-divider" />
+                    <button class="btn btn-google" id="googleLoginBtn">Sign in with Google</button>
+                </div>
+            </div>
+
+            <!-- Register Modal -->
+            <div class="modal" id="registerModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeRegisterModal">&times;</button>
+                    <h2 class="modal-title">Register</h2>
+                    <form id="registerForm">
+                        <input type="text" class="form-input" placeholder="Full Name" required />
+                        <input type="email" class="form-input" placeholder="Email" required />
+                        <input type="password" class="form-input" placeholder="Password" required />
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Logout Modal -->
+            <div class="modal" id="logoutModal">
+                <div class="modal-content">
+                    <button class="close-modal-btn" id="closeLogoutModal">&times;</button>
+                    <div class="logout-icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                    <h2 class="modal-title">Confirm Logout</h2>
+                    <p>Are you sure you want to log out of your account?</p>
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="cancelLogout">Cancel</button>
+                        <button class="btn btn-danger" id="confirmLogout">Logout</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Firebase + App Script -->
+            <script type="module" src="app.js"></script>
+</body>
+
+</html>
