@@ -21,6 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO users (email, password_hash) VALUES (?, ?)");
     $stmt->bind_param("ss", $email, $passwordHash);
 
+
+
+
+    // Insert new user with role
+    $stmt = $conn->prepare("INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $email, $passwordHash, $role);
+
     if ($stmt->execute()) {
         echo "Signup successful! <a href='login.php'>Login here</a>";
     } else {

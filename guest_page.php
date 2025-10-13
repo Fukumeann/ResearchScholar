@@ -1,32 +1,25 @@
 <?php
 session_start();
-// don't force login on home page — allow guests to browse
-require 'connect.php';
-
-// session flags
-$isLoggedIn = isset($_SESSION['user_id']);
-$name = $_SESSION['name'] ?? null;
-$role = $_SESSION['role'] ?? null;
+include 'connect.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>ResearchScholar - Home</title>
+    <meta charset="UTF-8">
+    <title>ResearchScholar - Guest</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
-
-    <!-- NAVBAR -->
+    <!-- Navbar -->
     <header>
-        <div class="logo">ResearchScholar</div>
-
+        <div class="logo"><strong>ResearchScholar</strong></div>
         <div class="nav-links">
-            <?php if ($isLoggedIn): ?>
-                <a href="profile.php"><i class="fas fa-user-circle"></i>
-                    <?php echo htmlspecialchars($name ?? 'Profile'); ?></a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="user_page.php"><i class="fas fa-user"></i> Dashboard</a>
                 <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
             <?php else: ?>
                 <a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
@@ -36,45 +29,76 @@ $role = $_SESSION['role'] ?? null;
     </header>
 
     <div class="container">
-        <!-- Guest sidebar -->
-        <php>
+        <!-- Sidebar -->
+        <nav class="sidebar">
             <div class="profile-section">
-                <img src="default_profile.png" alt="Guest">
-                <div class="name">Welcome Guest</div>
-                <div style="font-size:13px;color:#555">Create an account to save papers & join discussions</div>
+                <img src="default_profile.png" alt="Profile Picture">
+                <p><strong><?php echo $_SESSION['name'] ?? 'Guest'; ?></strong></p>
             </div>
 
             <ul>
-                <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <li><a href="register.php"><i class="fas fa-user-plus"></i> Register</a></li>
-                <li><a href="library.php"><i class="fas fa-book"></i> Browse Library</a></li>
-                <li><a href="questions.php"><i class="fas fa-question-circle"></i> Questions</a></li>
+                <li><a href="papers.php"><i class="fas fa-book"></i> Browse Papers</a></li>
+                <li><a href="about.php"><i class="fas fa-info-circle"></i> About</a></li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="profile.php"><i class="fas fa-user"></i> Profile</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fas fa-user"></i> Profile</a>
+                    <?php endif; ?>
+                </li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="library.php"><i class="fas fa-book"></i> Library</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fas fa-book"></i> Library</a>
+                    <?php endif; ?>
+                </li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="published.php"><i class="fas fa-star"></i> Published</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fas fa-star"></i> Published</a>
+                    <?php endif; ?>
+                </li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="questions.php"><i class="fa-solid fa-question"></i> Questions</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fa-solid fa-question"></i> Questions</a>
+                    <?php endif; ?>
+                </li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="notifications.php"><i class="fas fa-bell"></i> Notifications</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fas fa-bell"></i> Notifications</a>
+                    <?php endif; ?>
+                </li>
+
+                <li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="settings.php"><i class="fas fa-cog"></i> Settings</a>
+                    <?php else: ?>
+                        <a href="login.php"><i class="fas fa-cog"></i> Settings</a>
+                    <?php endif; ?>
+                </li>
             </ul>
-        </php>
         </nav>
 
-        <!-- MAIN CONTENT -->
+        <!-- Main Content -->
         <main>
-            <div class="search-bar">
-                <form action="search.php" method="get" role="search">
-                    <input type="text" name="q" placeholder="Search papers, questions, authors...">
-                    <button type="submit"><i class="fas fa-search"></i> Search</button>
-                </form>
-            </div>
+            <h2>Welcome to ResearchScholar</h2>
+            <p>Browse and discover research papers. Login to upload, download, or interact with the community.</p>
 
-            <div class="welcome-card">
-                <?php if ($isLoggedIn): ?>
-                    <h2>Welcome back, <?php echo htmlspecialchars($name ?? 'Researcher'); ?>!</h2>
-                    <p>Good to see you again — use the sidebar to manage your library, favorites, and uploads.</p>
-                <?php else: ?>
-                    <h2>Welcome to ResearchScholar</h2>
-                    <p>Discover and read research papers for free. Create an account to save favorites, upload your work,
-                        and join the community.</p>
-                <?php endif; ?>
-            </div>
+            <!-- Papers Container -->
+            <?php include "papers_container.php"; ?>
         </main>
     </div>
-
 </body>
 
 </html>
